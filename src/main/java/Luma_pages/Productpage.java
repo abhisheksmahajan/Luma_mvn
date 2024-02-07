@@ -10,6 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Productpage {
     WebDriver driver;
+    By xlSize= new By.ById("option-label-size-143-item-170");
+    By addtocartbtn= new By.ByCssSelector("button[title=\"Add to Cart\"]");
+    By color= new By.ByCssSelector("div[tabindex=\"0\"]>.swatch-option.color:nth-of-type(1)");
     By product1= new By.ByCssSelector(".products.list.items.product-items>.item.product.product-item:nth-of-type(1)>div>a");
     By product2= new By.ByCssSelector(".products.list.items.product-items>.item.product.product-item:nth-of-type(2)>div>a");
     By product3= new By.ByCssSelector(".products.list.items.product-items>.item.product.product-item:nth-of-type(3)>div>a");
@@ -62,5 +65,10 @@ public class Productpage {
     }
     public void navigate(){
         driver.navigate().to("https://magento.softwaretestingboard.com/men/tops-men/hoodies-and-sweatshirts-men.html");
+    }
+    public void additemtocart(){
+        driver.findElement(xlSize).click();
+        driver.findElement(color).click();
+        driver.findElement(addtocartbtn).click();
     }
 }

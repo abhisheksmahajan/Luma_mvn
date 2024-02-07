@@ -18,6 +18,7 @@ public class Lumatestfeaters {
     Accountpage accountpage;
     Productpage productpage;
     Compare_products compareProducts;
+    Wishlist wishlist;
     @BeforeTest
     void Start(){
     driver= new ChromeDriver();
@@ -38,52 +39,53 @@ public class Lumatestfeaters {
         login.enterusername("tony.stark@hotmail.com");
         login.enterpassword("Abhi@2698");
         login.clickonsignin();
+
     }
-//    @Test(priority = 2)
-//    void Addressoperation(){
-//        try {
-//            Thread.sleep(3000);
-//        }catch (Exception e){
-//            System.out.println(e);
-//        }
-//        home.clickonmyaccount();
-//        accountpage = new Accountpage(driver);
-//        accountpage.clickonsaddressbook();
-//        if(accountpage.ispresent()) {
-//            accountpage.addfirstname("Tony");
-//            accountpage.addlastname("Starck");
-//            accountpage.addcomponyname("Stratindustries");
-//            accountpage.addtelephonnumber("7845784565");
-//            accountpage.addaddress("l block,B54 , stela Regidency", "Los Angeles,California,USA");
-//            accountpage.addcity("Los Angeles");
-//            accountpage.selectstate("California");
-//            accountpage.addzipcode("90002");
-//            accountpage.selectcountry("United States");
-//            accountpage.clickonsubmit();
-//        }
-//        else{
-//            accountpage.clickonaddaddress();
-//            accountpage.addfirstname("Tony");
-//            accountpage.addlastname("Starck");
-//            accountpage.addcomponyname("Stratindustries");
-//            accountpage.addtelephonnumber("7845784565");
-//            accountpage.addaddress("l block,B54 , stela Regidency", "Los Angeles,California,USA");
-//            accountpage.addcity("Los Angeles");
-//            accountpage.selectstate("California");
-//            accountpage.addzipcode("90002");
-//            accountpage.selectcountry("United States");
-//            accountpage.Checkeddefaultbillingaddress();
-//            accountpage.clickonsubmit();
-//        }
-//    }
-//    @Test(priority = 3)
-//    void Editaddress(){
-//       accountpage.clickonchangeaddress();
-//
-//       accountpage.addcity("Acampo");
-//       accountpage.addzipcode("95220");
-//       accountpage.clickonsubmit();
-//    }
+    @Test(priority = 2)
+    void Addressoperation(){
+        try {
+            Thread.sleep(3000);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        home.clickonmyaccount();
+        accountpage = new Accountpage(driver);
+        accountpage.clickonsaddressbook();
+        if(accountpage.ispresent()) {
+            accountpage.addfirstname("Tony");
+            accountpage.addlastname("Starck");
+            accountpage.addcomponyname("Stratindustries");
+            accountpage.addtelephonnumber("7845784565");
+            accountpage.addaddress("l block,B54 , stela Regidency", "Los Angeles,California,USA");
+            accountpage.addcity("Los Angeles");
+            accountpage.selectstate("California");
+            accountpage.addzipcode("90002");
+            accountpage.selectcountry("United States");
+            accountpage.clickonsubmit();
+        }
+        else{
+            accountpage.clickonaddaddress();
+            accountpage.addfirstname("Tony");
+            accountpage.addlastname("Starck");
+            accountpage.addcomponyname("Stratindustries");
+            accountpage.addtelephonnumber("7845784565");
+            accountpage.addaddress("l block,B54 , stela Regidency", "Los Angeles,California,USA");
+            accountpage.addcity("Los Angeles");
+            accountpage.selectstate("California");
+            accountpage.addzipcode("90002");
+            accountpage.selectcountry("United States");
+            accountpage.Checkeddefaultbillingaddress();
+            accountpage.clickonsubmit();
+        }
+    }
+    @Test(priority = 3)
+    void Editaddress(){
+       accountpage.clickonchangeaddress();
+
+       accountpage.addcity("Acampo");
+       accountpage.addzipcode("95220");
+       accountpage.clickonsubmit();
+    }
     @Test(priority = 4)
     void Wishlistoperations(){
         //home.clickonmenbtn();
@@ -92,40 +94,43 @@ public class Lumatestfeaters {
         productpage.Clickonhas();
         productpage.clickonproduct1();
         productpage.clickonaddwishlist();
-        System.out.println("1");
         productpage.navigate();
-        System.out.println("2");
         productpage.clickonproduct2();
         productpage.clickonaddwishlist();
         productpage.navigate();
         productpage.clickonproduct3();
         productpage.clickonaddwishlist();
+        wishlist= new Wishlist(driver);
+        wishlist.deletfirstproduct();
+        wishlist.Addlastaddedproducttocart();
+        productpage.additemtocart();
+
 
 
 
 
     }
-//    @Test(priority = 5)
-//    void compareoperations(){
-//       try {
-//           home.clickonmenbtn();
-//
-//         //  productpage.Clickonhas();
-//           Thread.sleep(3000);
-//           productpage.addproducttocompare1();
-//           Thread.sleep(3000);
-//           productpage.addproducttocompare2();
-//
-//
-//       }catch(Exception e){
-//
-//       }
-//
-////        productpage.clickoncompareproducts();
-////        compareProducts = new Compare_products(driver);
-////        compareProducts.clickdeletebtn();
-//
-//    }
+    @Test(priority = 5)
+    void compareoperations(){
+       try {
+           home.clickonmenbtn();
+
+         //  productpage.Clickonhas();
+           Thread.sleep(3000);
+           productpage.addproducttocompare1();
+           Thread.sleep(3000);
+           productpage.addproducttocompare2();
+
+
+       }catch(Exception e){
+
+       }
+
+//        productpage.clickoncompareproducts();
+//        compareProducts = new Compare_products(driver);
+//        compareProducts.clickdeletebtn();
+
+    }
 
     @AfterTest
     void close(){
