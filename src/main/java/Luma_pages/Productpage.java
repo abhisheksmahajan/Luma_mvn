@@ -25,25 +25,21 @@ public class Productpage {
 //    WebElement product3;
 //    @FindBy(css = ".product-addto-links>.action.towishlist") WebElement wishlistbtn;
     By hoodiesAndSwetesherts= new By.ByCssSelector(".widget.block.block-static-block>div>.items:nth-of-type(1)>.item:nth-of-type(1)>a");
-    By productFirst= new By.ByCssSelector(".product-items.widget-product-grid>.product-item:nth-of-type(1)>div>div>div>div>div>a[title='Add to Compare']");
+    By Comparebtn= new By.ByCssSelector(".product-addto-links>.action.tocompare");
     By productSecond= new By.ByCssSelector(".product-items.widget-product-grid>.product-item:nth-of-type(2)>div>div>div>div>div>a[title='Add to Compare']");
-    By compareProductbtn= new By.ByCssSelector("a[title=\"Compare Products\"]");
+    By compareProductsbtn= new By.ByCssSelector("a[title=\"Compare Products\"]");
 
     public Productpage(WebDriver driver) {
         this.driver = driver;
     }
-    public void addproducttocompare1 (){
-        driver.findElement(productFirst).click();
+    public void addproducttocompare (){
+        driver.findElement(Comparebtn).click();
 
 
     }
-    public void addproducttocompare2 (){
 
-        driver.findElement(productSecond).click();
-
-    }
     public void clickoncompareproducts(){
-        driver.findElement(compareProductbtn).click();
+        driver.findElement(compareProductsbtn).click();
     }
     public void Clickonhas(){
         driver.findElement(hoodiesAndSwetesherts).click();

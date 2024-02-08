@@ -19,6 +19,8 @@ public class Lumatestfeaters {
     Productpage productpage;
     Compare_products compareProducts;
     Wishlist wishlist;
+    Cartpage cartpage;
+    Orderpage orderpage;
     @BeforeTest
     void Start(){
     driver= new ChromeDriver();
@@ -106,35 +108,66 @@ public class Lumatestfeaters {
         productpage.additemtocart();
 
 
-
-
-
     }
     @Test(priority = 5)
     void compareoperations(){
-       try {
+
            home.clickonmenbtn();
+           home.clickonmenbtn();
+           productpage.Clickonhas();
+           productpage.clickonproduct3();
+           productpage.addproducttocompare();
+           productpage.back();
+           productpage.clickonproduct2();
+           productpage.addproducttocompare();
+           productpage.clickoncompareproducts();
+           compareProducts = new Compare_products(driver);
+           int a[]= compareProducts.Comparereviwes();
+           if(a[0]>a[1]){
+               compareProducts.clickon(".cell.product.info:nth-of-type(1)>.product-item-actions.hidden-print>.actions-primary");
+           }
+           else {
+               compareProducts.clickon(".cell.product.info:nth-of-type(2)>.product-item-actions.hidden-print>.actions-primary");
+           }
+           productpage.additemtocart();
+           productpage.clickoncompareproducts();
+           compareProducts.clickdeletebtn1();
+           compareProducts.clickondeletebtn2();
 
-         //  productpage.Clickonhas();
-           Thread.sleep(3000);
-           productpage.addproducttocompare1();
-           Thread.sleep(3000);
-           productpage.addproducttocompare2();
+    }
+    @Test(priority = 6)
+    void cartoperation(){
+        home.clickoncarticon();
+        home.clickonviewandeditecart();
+        System.out.println("Cart Count:"+home.countofcart());
+        home.clickonmenbtn();
+       productpage.Clickonhas();
+       productpage.clickonproduct1();
+        productpage.additemtocart();
+        home.clickoncarticon();
+        home.clickonviewandeditecart();
+        System.out.println("Cart Count After Adding Product:"+home.countofcart());
+        cartpage= new Cartpage(driver);
+        home.clickoncarticon();
+        System.out.println("Total Order Amount:"+cartpage.Orderamont());
+        cartpage.clickonplaceorder();
+        cartpage.checkfixedbtn();
+        cartpage.clickshipherebtn();
+        cartpage.clickonnextbtn();
+        orderpage= new Orderpage(driver);
+        orderpage.Checkaddress();
+        orderpage.placeouder();
+        System.out.println("Order Number:"+orderpage.Orderid());
 
 
-       }catch(Exception e){
 
-       }
-
-//        productpage.clickoncompareproducts();
-//        compareProducts = new Compare_products(driver);
-//        compareProducts.clickdeletebtn();
 
     }
 
+
     @AfterTest
     void close(){
-   //     driver.close();
+        driver.close();
     }
 
 }

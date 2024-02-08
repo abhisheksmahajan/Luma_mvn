@@ -12,13 +12,15 @@ public class Home {
     By men= new By.ByCssSelector("#ui-id-5");
     By signin= new By.ByCssSelector("div[class='panel header'] li[data-label='or']>a");
     By homeLogo= new By.ByCssSelector(".logo");
+    By Viewandeditecart= new By.ByCssSelector(".action.viewcart");
+    By cartcount= new By.ByCssSelector(".items-total");
 
     public Home(WebDriver driver) {
         this.driver = driver;
     }
 
     public void verify(){
-        System.out.println(driver.getTitle());
+        System.out.println("Page Title:"+driver.getTitle());
     }
     void clickoncart(){
         driver.findElement(cart).click();
@@ -40,5 +42,20 @@ public class Home {
     }
     public void Clickonhomebtn(){
         driver.findElement(homeLogo).click();
+    }
+    public void clickoncarticon(){
+        try{
+            Thread.sleep(3000);
+        driver.findElement(cart).click();}catch (Exception e){}
+    }
+    public void clickonviewandeditecart(){
+        driver.findElement(Viewandeditecart).click();
+    }
+    public String countofcart(){
+        try {
+            Thread.sleep(3000);
+            driver.findElement(cart).click();
+        }catch (Exception e){ }
+        return driver.findElement(cartcount).getText();
     }
 }
